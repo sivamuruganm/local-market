@@ -219,6 +219,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
+// Open presentation function
+function openPresentation() {
+    // Try to open the presentation file
+    const presentationWindow = window.open('presentation-preview.html', '_blank');
+    
+    // Fallback if file doesn't open
+    if (!presentationWindow) {
+        alert('Presentation file not found. Please check if presentation-preview.html exists in the same folder.');
+        // Alternative: redirect to markdown file
+        window.open('Greenfield_Market_Presentation.md', '_blank');
+    }
+}
+
 // Product filtering functionality
 function filterProducts(category) {
     const products = document.querySelectorAll('.product-card');
