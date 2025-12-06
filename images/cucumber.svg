@@ -1,0 +1,13 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0ffff"/>
+  <ellipse cx="70" cy="100" rx="15" ry="50" fill="#228B22"/>
+  <ellipse cx="130" cy="100" rx="15" ry="48" fill="#2E8B57"/>
+  <ellipse cx="100" cy="120" rx="15" ry="45" fill="#006400"/>
+  <ellipse cx="65" cy="95" rx="12" ry="45" fill="#90EE90"/>
+  <ellipse cx="125" cy="95" rx="12" ry="43" fill="#98FB98"/>
+  <ellipse cx="95" cy="115" rx="12" ry="40" fill="#90EE90"/>
+  <circle cx="70" cy="70" r="3" fill="#FFFF00"/>
+  <circle cx="130" cy="72" r="3" fill="#FFFF00"/>
+  <circle cx="100" cy="90" r="3" fill="#FFFF00"/>
+  <text x="100" y="25" text-anchor="middle" font-family="Arial" font-size="14" fill="#006400">Crisp Cucumbers</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0fff0"/>
+  <ellipse cx="80" cy="90" rx="20" ry="30" fill="#228B22"/>
+  <ellipse cx="120" cy="95" rx="18" ry="28" fill="#2E8B57"/>
+  <ellipse cx="100" cy="110" rx="22" ry="32" fill="#006400"/>
+  <ellipse cx="90" cy="75" rx="15" ry="25" fill="#32CD32"/>
+  <ellipse cx="110" cy="80" rx="16" ry="26" fill="#228B22"/>
+  <ellipse cx="105" cy="125" rx="18" ry="28" fill="#2E8B57"/>
+  <path d="M75 60 Q80 50 85 60" stroke="#228B22" stroke-width="2" fill="none"/>
+  <path d="M115 65 Q120 55 125 65" stroke="#228B22" stroke-width="2" fill="none"/>
+  <path d="M95 45 Q100 35 105 45" stroke="#228B22" stroke-width="2" fill="none"/>
+  <text x="100" y="25" text-anchor="middle" font-family="Arial" font-size="14" fill="#006400">Fresh Spinach</text>
+</svg>
