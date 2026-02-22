@@ -1,0 +1,14 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fffef7"/>
+  <rect x="70" y="80" width="60" height="40" fill="#FFFF99" rx="5"/>
+  <rect x="75" y="85" width="50" height="30" fill="#FFFACD" rx="3"/>
+  <rect x="80" y="90" width="40" height="20" fill="#FFF8DC"/>
+  <circle cx="85" cy="95" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="100" cy="100" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="115" cy="95" r="2" fill="#FFD700" opacity="0.5"/>
+  <circle cx="90" cy="105" r="1" fill="#FFD700" opacity="0.4"/>
+  <circle cx="110" cy="105" r="1" fill="#FFD700" opacity="0.4"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="14" fill="#8B4513">Farm Fresh</text>
+  <text x="100" y="50" text-anchor="middle" font-family="Arial" font-size="14" fill="#8B4513">Butter</text>
+  <text x="100" y="170" text-anchor="middle" font-family="Arial" font-size="10" fill="#8B4513">Churned from Local Cream</text>
+</svg>

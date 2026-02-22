@@ -1,0 +1,8 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fff8e7"/>
+  <path d="M50 120 Q100 80 150 120 Q140 150 100 140 Q60 150 50 120" fill="#f4d03f"/>
+  <path d="M55 125 Q100 90 145 125 Q135 145 100 135 Q65 145 55 125" fill="#f7dc6f"/>
+  <ellipse cx="80" cy="110" rx="8" ry="4" fill="#e8c547" opacity="0.7"/>
+  <ellipse cx="120" cy="115" rx="6" ry="3" fill="#e8c547" opacity="0.7"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="14" fill="#8B4513">Butter Croissant</text>
+</svg>

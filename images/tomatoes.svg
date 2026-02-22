@@ -1,0 +1,13 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f0fff0"/>
+  <circle cx="70" cy="80" r="30" fill="#FF6347"/>
+  <circle cx="130" cy="80" r="28" fill="#FF4500"/>
+  <circle cx="100" cy="130" r="32" fill="#DC143C"/>
+  <circle cx="65" cy="75" r="27" fill="#FF7F50"/>
+  <circle cx="125" cy="75" r="25" fill="#FF6B6B"/>
+  <circle cx="95" cy="125" r="29" fill="#E53E3E"/>
+  <ellipse cx="70" cy="65" rx="15" ry="8" fill="#228B22"/>
+  <ellipse cx="130" cy="63" rx="12" ry="6" fill="#228B22"/>
+  <ellipse cx="100" cy="115" rx="18" ry="10" fill="#228B22"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="14" fill="#228B22">Fresh Tomatoes</text>
+</svg>
