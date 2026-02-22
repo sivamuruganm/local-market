@@ -1,0 +1,12 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#fffaf0"/>
+  <rect x="60" y="70" width="80" height="60" fill="#FFD700" rx="10"/>
+  <rect x="65" y="75" width="70" height="50" fill="#FFF8DC" rx="8"/>
+  <circle cx="80" cy="90" r="3" fill="#FFD700" opacity="0.7"/>
+  <circle cx="120" cy="95" r="3" fill="#FFD700" opacity="0.7"/>
+  <circle cx="100" cy="110" r="3" fill="#FFD700" opacity="0.7"/>
+  <circle cx="90" cy="105" r="2" fill="#FFD700" opacity="0.6"/>
+  <circle cx="110" cy="100" r="2" fill="#FFD700" opacity="0.6"/>
+  <text x="100" y="30" text-anchor="middle" font-family="Arial" font-size="14" fill="#8B4513">Artisan Cheese</text>
+  <text x="100" y="160" text-anchor="middle" font-family="Arial" font-size="12" fill="#8B4513">Local Cheddar</text>
+</svg>
