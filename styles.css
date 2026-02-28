@@ -124,6 +124,64 @@ html {
     font-size: 1rem;
 }
 
+.feature-item {
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(255,255,255,0.35) !important;
+}
+
+.feature-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d4a3e;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    animation: slideDown 0.2s ease;
+    pointer-events: none;
+}
+
+.feature-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #2d4a3e;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-tooltip {
+        white-space: normal;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        max-width: 150px;
+    }
+}
+
 /* Community Info Section */
 .community-section {
     padding: 3rem 2rem;
@@ -919,5 +977,512 @@ footer {
     
     .partners-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* Checkout Modal Styles */
+.checkout-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+}
+
+.checkout-content {
+    background-color: #fff;
+    margin: 2% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 700px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.3s ease;
+}
+
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #7fb069;
+    padding-bottom: 1rem;
+}
+
+.checkout-header h2 {
+    color: #2d4a3e;
+    margin: 0;
+}
+
+.checkout-header .close-btn {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+}
+
+.checkout-header .close-btn:hover {
+    color: #333;
+}
+
+.checkout-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    color: #2d4a3e;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #7fb069;
+    box-shadow: 0 0 5px rgba(127, 176, 105, 0.3);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-item span:last-child {
+    font-weight: bold;
+    color: #7fb069;
+}
+
+.order-total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #7fb069;
+    text-align: right;
+    font-size: 1.2rem;
+    color: #2d4a3e;
+}
+
+.checkout-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-cancel, .btn-submit {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-cancel {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.btn-submit {
+    background: #7fb069;
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #6a9156;
+}
+
+@media (max-width: 600px) {
+    .checkout-content {
+        margin: 5% auto;
+        padding: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkout-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel, .btn-submit {
+        width: 100%;
+    }
+}
+
+/* Confirmation Modal Styles */
+.confirmation-modal {
+    display: none;
+    position: fixed;
+    z-index: 3500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem 0;
+    overflow-y: auto;
+}
+
+.confirmation-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-content {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    max-width: 650px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.confirmation-icon {
+    font-size: 4rem;
+    width: 80px;
+    height: 80px;
+    background: #27ae60;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.confirmation-content h2 {
+    color: #2d4a3e;
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.confirmation-message {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.confirmation-details {
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.detail-box {
+    background: white;
+    border-left: 4px solid #7fb069;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.detail-box h3 {
+    color: #2d4a3e;
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+}
+
+.detail-box p {
+    margin: 0.5rem 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.confirmation-number {
+    font-size: 1.4rem !important;
+    font-weight: bold;
+    color: #7fb069 !important;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
+}
+
+.confirmation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.confirmation-item:last-child {
+    border-bottom: none;
+}
+
+.confirmation-item span:last-child {
+    font-weight: bold;
+    color: #7fb069;
+}
+
+.confirmation-total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #7fb069;
+    text-align: right;
+    font-size: 1.1rem;
+    color: #2d4a3e;
+}
+
+.confirmation-note {
+    background: #f0f8f4;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #2d4a3e;
+    font-size: 0.9rem;
+    margin: 2rem 0;
+    line-height: 1.6;
+}
+
+.btn-home {
+    background: #7fb069;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-home:hover {
+    background: #6a9156;
+}
+
+@media (max-width: 600px) {
+    .confirmation-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .confirmation-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 3rem;
+    }
+    
+    .confirmation-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .detail-box {
+        padding: 1rem;
+    }
+    
+    .btn-home {
+        width: 100%;
+    }
+}
+
+/* Partner Modal Styles */
+.partner-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.partner-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: slideInUp 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideInUp {
+    from { 
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.partner-close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.partner-close-btn:hover {
+    color: #333;
+}
+
+.partner-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #7fb069;
+    padding-bottom: 1rem;
+}
+
+.partner-modal-logo {
+    font-size: 3rem;
+}
+
+.partner-modal-header h2 {
+    color: #2d4a3e;
+    margin: 0;
+}
+
+.partner-modal-body {
+    margin-bottom: 1.5rem;
+}
+
+.partner-modal-body p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.partner-modal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.partner-info-item {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #7fb069;
+}
+
+.partner-info-item strong {
+    color: #2d4a3e;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.partner-info-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.partner-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-close {
+    background: #7fb069;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-close:hover {
+    background: #6a9156;
+}
+
+@media (max-width: 600px) {
+    .partner-modal-content {
+        margin: 20% auto;
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+    
+    .partner-modal-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .partner-modal-header {
+        flex-direction: column;
+        text-align: center;
     }
 }

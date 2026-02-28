@@ -1,0 +1,28 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f5f5f5"/>
+  
+  <!-- Lotion bottle body -->
+  <path d="M 70 120 L 65 160 Q 65 175 80 175 L 120 175 Q 135 175 135 160 L 130 120 Z" fill="#fff5e6" stroke="#d4a574" stroke-width="2"/>
+  
+  <!-- Bottle label -->
+  <rect x="72" y="130" width="56" height="35" fill="#e8d5c4" stroke="#c9a876" stroke-width="1" rx="3"/>
+  
+  <!-- Label text -->
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="9" fill="#8b6f47" font-weight="bold">Natural</text>
+  <text x="100" y="157" text-anchor="middle" font-family="Arial" font-size="9" fill="#8b6f47" font-weight="bold">Lotion</text>
+  
+  <!-- Pump cap -->
+  <rect x="90" y="100" width="20" height="20" fill="#8b6f47" stroke="#654321" stroke-width="1"/>
+  <circle cx="100" cy="110" r="6" fill="#a0826d"/>
+  
+  <!-- Pump dispenser tube -->
+  <rect x="98" y="90" width="4" height="12" fill="#666"/>
+  
+  <!-- Highlight on bottle -->
+  <ellipse cx="75" cy="140" rx="6" ry="12" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Decorative leaf -->
+  <ellipse cx="145" cy="100" rx="8" ry="12" fill="#7fb069" opacity="0.7" transform="rotate(-30 145 100)"/>
+  <line x1="145" y1="90" x2="145" y2="110" stroke="#5a7a4a" stroke-width="1"/>
+</svg>

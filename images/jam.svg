@@ -1,0 +1,28 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f5f5f5"/>
+  
+  <!-- Jar body -->
+  <rect x="60" y="80" width="80" height="90" fill="#e8f5e9" stroke="#81c784" stroke-width="2" rx="5"/>
+  
+  <!-- Jar lid -->
+  <rect x="70" y="70" width="60" height="12" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+  <ellipse cx="100" cy="70" rx="30" ry="6" fill="#d3d3d3" stroke="#808080" stroke-width="1"/>
+  
+  <!-- Jam inside -->
+  <rect x="62" y="90" width="76" height="75" fill="#6d4c41" opacity="0.9"/>
+  
+  <!-- Jam texture/shine -->
+  <ellipse cx="80" cy="110" rx="15" ry="20" fill="#8d6e63" opacity="0.6"/>
+  <ellipse cx="115" cy="140" rx="12" ry="15" fill="#5d4037" opacity="0.5"/>
+  
+  <!-- Label -->
+  <rect x="68" y="115" width="64" height="40" fill="#fff9c4" stroke="#f9a825" stroke-width="1" rx="3"/>
+  
+  <!-- Label text -->
+  <text x="100" y="130" text-anchor="middle" font-family="Arial" font-size="10" fill="#d32f2f" font-weight="bold">Blueberry</text>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="9" fill="#c62828">Jam</text>
+  
+  <!-- Jar shine/highlight -->
+  <ellipse cx="70" cy="100" rx="5" ry="15" fill="#ffffff" opacity="0.3"/>
+</svg>

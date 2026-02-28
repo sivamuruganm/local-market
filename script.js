@@ -14,13 +14,20 @@ const products = {
     yogurt: { name: 'Greek Yogurt', price: 4.49 },
     butter: { name: 'Farm Fresh Butter', price: 6.29 },
     honey: { name: 'Wildflower Honey', price: 8.99 },
+    jam: { name: 'Blueberry Jam', price: 6.49 },
     vegetables: { name: 'Seasonal Vegetables', price: 3.99 },
     tomatoes: { name: 'Fresh Tomatoes', price: 4.49 },
     lettuce: { name: 'Organic Lettuce', price: 2.99 },
     carrots: { name: 'Baby Carrots', price: 3.29 },
     spinach: { name: 'Fresh Spinach', price: 3.79 },
     cucumber: { name: 'Crisp Cucumbers', price: 2.49 },
-    soap: { name: 'Handmade Soap', price: 7.49 }
+    apples: { name: 'Fresh Apples', price: 3.49 },
+    soap: { name: 'Handmade Soap', price: 7.49 },
+    lotion: { name: 'Natural Lotion', price: 9.99 },
+    loofah: { name: 'Natural Loofah', price: 6.99 },
+    hammer: { name: 'Claw Hammer', price: 16.99 },
+    paint: { name: 'Premium Paint', price: 34.99 },
+    lightbulb: { name: 'LED Light Bulbs', price: 12.99 }
 };
 
 // Add item to cart
@@ -128,8 +135,19 @@ function toggleCart() {
 // Close cart when clicking outside
 window.onclick = function(event) {
     const cartModal = document.getElementById('cart-modal');
+    const checkoutModal = document.getElementById('checkout-modal');
+    const confirmationModal = document.getElementById('confirmation-modal');
+    
     if (event.target === cartModal) {
         cartModal.style.display = 'none';
+    }
+    
+    if (event.target === checkoutModal) {
+        closeCheckout();
+    }
+    
+    if (event.target === confirmationModal) {
+        closeConfirmation();
     }
 }
 
@@ -140,16 +158,146 @@ function checkout() {
         return;
     }
     
+    // Show checkout modal
+    const checkoutModal = document.getElementById('checkout-modal');
+    const checkoutSummary = document.getElementById('checkout-summary');
+    
+    // Populate cart summary in checkout form
+    let summaryHTML = '';
+    cart.forEach(item => {
+        summaryHTML += `
+            <div class="summary-item">
+                <span>${item.name} x${item.quantity}</span>
+                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+        `;
+    });
+    
+    // Add delivery fee if applicable
     const deliveryOption = document.querySelector('input[name="delivery"]:checked');
-    const isDelivery = deliveryOption.value === 'delivery';
-    const deliveryText = isDelivery ? 'Local delivery within 2-3 hours' : 'Ready for pickup in 30 minutes';
+    const isDelivery = deliveryOption && deliveryOption.value === 'delivery';
+    if (isDelivery) {
+        summaryHTML += `
+            <div class="summary-item">
+                <span>Delivery Fee</span>
+                <span>$3.99</span>
+            </div>
+        `;
+    }
     
-    alert(`Thank you for your order from Greenfield Market!\n\nTotal: $${cartTotal.toFixed(2)}\n${deliveryText}\n\nWe'll contact you shortly with order confirmation.\n\nSupporting local community, one order at a time! 🌱`);
+    checkoutSummary.innerHTML = summaryHTML;
+    document.getElementById('checkout-total').textContent = cartTotal.toFixed(2);
     
-    // Clear cart
+    checkoutModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close checkout modal
+function closeCheckout() {
+    const checkoutModal = document.getElementById('checkout-modal');
+    checkoutModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Submit checkout form
+function submitCheckout(event) {
+    event.preventDefault();
+    
+    const fullName = document.getElementById('full-name').value;
+    const streetAddress = document.getElementById('street-address').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const zipCode = document.getElementById('zip-code').value;
+    const phoneNumber = document.getElementById('phone').value;
+    const cardName = document.getElementById('card-name').value;
+    const cardNumber = document.getElementById('card-number').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
+    
+    // Simple validation for card number (should be 16 digits)
+    const cleanCardNumber = cardNumber.replace(/\s/g, '');
+    if (cleanCardNumber.length !== 16 || isNaN(cleanCardNumber)) {
+        alert('Please enter a valid 16-digit card number');
+        return;
+    }
+    
+    // Validate expiry format
+    if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        alert('Please enter expiry date in MM/YY format');
+        return;
+    }
+    
+    // Validate CVV
+    if (!/^\d{3}$/.test(cvv)) {
+        alert('Please enter a valid 3-digit CVV');
+        return;
+    }
+    
+    // Generate random confirmation number
+    const confirmationNumber = generateConfirmationNumber();
+    
+    // Populate confirmation modal with order details
+    document.getElementById('confirmation-number').textContent = confirmationNumber;
+    document.getElementById('confirmation-name').textContent = `Name: ${fullName}`;
+    
+    const deliveryAddress = `${streetAddress}, ${city}, ${state} ${zipCode}`;
+    document.getElementById('confirmation-address').textContent = `Address: ${deliveryAddress}`;
+    document.getElementById('confirmation-phone').textContent = `Phone: ${phoneNumber}`;
+    
+    // Populate confirmation items
+    let itemsHTML = '';
+    cart.forEach(item => {
+        itemsHTML += `
+            <div class="confirmation-item">
+                <span>${item.name} x${item.quantity}</span>
+                <span>$${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+        `;
+    });
+    
+    // Add delivery fee if applicable
+    const deliveryOption = document.querySelector('input[name="delivery"]:checked');
+    const isDelivery = deliveryOption && deliveryOption.value === 'delivery';
+    if (isDelivery) {
+        itemsHTML += `
+            <div class="confirmation-item">
+                <span>Delivery Fee</span>
+                <span>$3.99</span>
+            </div>
+        `;
+    }
+    
+    document.getElementById('confirmation-items').innerHTML = itemsHTML;
+    document.getElementById('confirmation-total').textContent = cartTotal.toFixed(2);
+    
+    // Hide checkout modal and show confirmation modal
+    closeCheckout();
+    const confirmationModal = document.getElementById('confirmation-modal');
+    confirmationModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    // Clear cart and close cart modal
     cart = [];
     updateCartDisplay();
     toggleCart();
+    
+    // Reset form
+    document.getElementById('checkout-form').reset();
+}
+
+// Generate random confirmation number
+function generateConfirmationNumber() {
+    const prefix = 'GFM';
+    const year = new Date().getFullYear();
+    const randomNum = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+    return `${prefix}-${year}-${randomNum}`;
+}
+
+// Close confirmation modal
+function closeConfirmation() {
+    const confirmationModal = document.getElementById('confirmation-modal');
+    confirmationModal.classList.remove('show');
+    document.body.style.overflow = 'auto';
 }
 
 // Show notification
@@ -217,6 +365,61 @@ document.addEventListener('DOMContentLoaded', function() {
             option.addEventListener('change', updateCartDisplay);
         });
     }, 100);
+    
+    // Add feature tooltip functionality
+    const featureItems = document.querySelectorAll('.feature-item');
+    featureItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            showFeatureTooltip(this);
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            removeFeatureTooltip(this);
+        });
+        
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tooltip = this.querySelector('.feature-tooltip');
+            if (tooltip) {
+                removeFeatureTooltip(this);
+            } else {
+                showFeatureTooltip(this);
+            }
+        });
+    });
+    
+    // Add form input formatting
+    const cardNumberInput = document.getElementById('card-number');
+    if (cardNumberInput) {
+        cardNumberInput.addEventListener('input', function() {
+            // Remove non-digits
+            let value = this.value.replace(/\D/g, '');
+            // Add spaces every 4 digits
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            this.value = value;
+        });
+    }
+    
+    const expiryInput = document.getElementById('expiry');
+    if (expiryInput) {
+        expiryInput.addEventListener('input', function() {
+            // Remove non-digits
+            let value = this.value.replace(/\D/g, '');
+            // Add slash after 2 digits
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            this.value = value;
+        });
+    }
+    
+    const cvvInput = document.getElementById('cvv');
+    if (cvvInput) {
+        cvvInput.addEventListener('input', function() {
+            // Only allow digits
+            this.value = this.value.replace(/\D/g, '');
+        });
+    }
 });
 
 // Open presentation function
@@ -261,4 +464,61 @@ function filterProducts(category) {
             }
         });
     }, 50);
+}
+
+// Partner popup functions
+function showPartnerPopup(event, name, description, location, phone, logo) {
+    event.preventDefault();
+    
+    const modal = document.getElementById('partner-modal');
+    const nameEl = document.getElementById('partner-name');
+    const descriptionEl = document.getElementById('partner-description');
+    const locationEl = document.getElementById('partner-location');
+    const phoneEl = document.getElementById('partner-phone');
+    const logoEl = document.getElementById('partner-logo');
+    
+    nameEl.textContent = name;
+    descriptionEl.textContent = description;
+    locationEl.textContent = location;
+    phoneEl.textContent = phone;
+    logoEl.textContent = logo;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePartnerPopup() {
+    const modal = document.getElementById('partner-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close partner modal when clicking outside
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('partner-modal');
+    if (event.target === modal) {
+        closePartnerPopup();
+    }
+});
+
+// Feature tooltip functions
+function showFeatureTooltip(element) {
+    // Remove any existing tooltips
+    removeFeatureTooltip(element);
+    
+    const description = element.getAttribute('data-description');
+    if (!description) return;
+    
+    const tooltip = document.createElement('div');
+    tooltip.className = 'feature-tooltip';
+    tooltip.textContent = description;
+    
+    element.appendChild(tooltip);
+}
+
+function removeFeatureTooltip(element) {
+    const tooltip = element.querySelector('.feature-tooltip');
+    if (tooltip) {
+        tooltip.remove();
+    }
 }
