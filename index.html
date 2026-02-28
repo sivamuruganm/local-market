@@ -20,7 +20,6 @@
                 <a href="#about">About Us</a>
                 <a href="#hours">Hours</a>
                 <a href="#contact">Contact</a>
-                <a href="#" onclick="openPresentation()" style="background: #7fb069; color: white; padding: 0.5rem 1rem; border-radius: 20px;">📊 Presentation</a>
             </div>
             <div class="cart">
                 <button id="cart-btn" onclick="toggleCart()">
@@ -35,9 +34,9 @@
             <h2>Welcome to Greenfield Market</h2>
             <p>Your neighborhood's trusted local store for quality goods and friendly service</p>
             <div class="hero-features">
-                <span>🌱 Local & Fresh</span>
-                <span>🤝 Community Owned</span>
-                <span>📍 Greenfield Center</span>
+                <span class="feature-item" data-description="We source directly from local farms and producers to bring you the freshest products available">🌱 Local & Fresh</span>
+                <span class="feature-item" data-description="Greenfield Market is locally owned and operated by members of our community">🤝 Community Owned</span>
+                <span class="feature-item" data-description="Located in the heart of downtown, we're your convenient neighborhood gathering place">📍 Greenfield Center</span>
             </div>
         </section>
 
@@ -74,6 +73,7 @@
                     <button class="filter-btn" onclick="filterProducts('produce')">🥕 Produce</button>
                     <button class="filter-btn" onclick="filterProducts('pantry')">🍯 Pantry</button>
                     <button class="filter-btn" onclick="filterProducts('personal-care')">🧼 Personal Care</button>
+                    <button class="filter-btn" onclick="filterProducts('hardware')">🔨 Hardware</button>
                 </div>
             </div>
             
@@ -130,6 +130,15 @@
                     <p class="description">Raw honey from Greenfield Apiaries</p>
                     <p class="local-badge">🌱 Local</p>
                     <button onclick="addToCart('honey', 8.99)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="pantry">
+                    <img src="images/jam.svg" alt="Blueberry Jam">
+                    <h3>Blueberry Jam</h3>
+                    <p class="price">$6.49</p>
+                    <p class="description">Homemade jam with fresh local blueberries</p>
+                    <p class="local-badge">🌱 Local</p>
+                    <button onclick="addToCart('jam', 6.49)">Add to Cart</button>
                 </div>
                 
                 <div class="product-card" data-category="dairy">
@@ -222,6 +231,15 @@
                     <button onclick="addToCart('cucumber', 2.49)">Add to Cart</button>
                 </div>
                 
+                <div class="product-card" data-category="produce">
+                    <img src="images/apples.svg" alt="Fresh Apples">
+                    <h3>Fresh Apples</h3>
+                    <p class="price">$3.49/lb</p>
+                    <p class="description">Crisp, sweet apples from local orchards</p>
+                    <p class="local-badge">🌱 Local</p>
+                    <button onclick="addToCart('apples', 3.49)">Add to Cart</button>
+                </div>
+                
                 <div class="product-card" data-category="personal-care">
                     <img src="images/soap.svg" alt="Handmade Soap">
                     <h3>Handmade Soap</h3>
@@ -229,6 +247,51 @@
                     <p class="description">Natural soap made by local artisans</p>
                     <p class="local-badge">🌱 Handmade</p>
                     <button onclick="addToCart('soap', 7.49)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="personal-care">
+                    <img src="images/lotion.svg" alt="Natural Lotion">
+                    <h3>Natural Lotion</h3>
+                    <p class="price">$9.99</p>
+                    <p class="description">Moisturizing lotion with organic ingredients</p>
+                    <p class="local-badge">🌱 Organic</p>
+                    <button onclick="addToCart('lotion', 9.99)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="personal-care">
+                    <img src="images/loofah.svg" alt="Natural Loofah">
+                    <h3>Natural Loofah</h3>
+                    <p class="price">$6.99</p>
+                    <p class="description">Eco-friendly natural loofah sponge for bathing</p>
+                    <p class="local-badge">🌱 Eco-Friendly</p>
+                    <button onclick="addToCart('loofah', 6.99)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="hardware">
+                    <img src="images/hammer.svg" alt="Claw Hammer">
+                    <h3>Claw Hammer</h3>
+                    <p class="price">$16.99</p>
+                    <p class="description">16oz claw hammer with comfortable wooden handle</p>
+                    <p class="local-badge">🔧 Tool</p>
+                    <button onclick="addToCart('hammer', 16.99)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="hardware">
+                    <img src="images/paint.svg" alt="Premium Paint">
+                    <h3>Premium Paint</h3>
+                    <p class="price">$34.99</p>
+                    <p class="description">1 gallon interior/exterior premium quality paint</p>
+                    <p class="local-badge">🎨 Paint</p>
+                    <button onclick="addToCart('paint', 34.99)">Add to Cart</button>
+                </div>
+                
+                <div class="product-card" data-category="hardware">
+                    <img src="images/lightbulb.svg" alt="LED Light Bulbs">
+                    <h3>LED Light Bulbs</h3>
+                    <p class="price">$12.99</p>
+                    <p class="description">Pack of 4 energy-efficient LED 60W equivalent bulbs</p>
+                    <p class="local-badge">💡 Efficient</p>
+                    <button onclick="addToCart('lightbulb', 12.99)">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -246,7 +309,7 @@
                         <span>📍 456 Oak Street</span>
                         <span>📞 (555) 234-5678</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Baker's Corner</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Baker\'s Corner', 'Family-owned bakery that has been serving the Greenfield community for over 30 years. We specialize in freshly baked artisan bread, buttery croissants, blueberry muffins, and chocolate chip cookies - made from scratch daily using only the finest ingredients. Our master bakers wake up at 4 AM every morning to ensure you have fresh-baked goods available throughout the day. All of our products are free from artificial preservatives and made with love for our community.', '456 Oak Street, Greenfield (Located in the historic downtown district near the courthouse, with convenient parking)', '(555) 234-5678', '🥖')" class="partner-link">Visit Baker's Corner</a>
                 </div>
 
                 <div class="partner-card">
@@ -257,7 +320,7 @@
                         <span>📍 789 Farm Road</span>
                         <span>📞 (555) 345-6789</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Johnson's Farm</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Johnson\'s Farm', 'Proud family-owned organic farm that has been cultivating fresh produce and raising healthy livestock for three generations. We specialize in free-range eggs from our well-cared-for hens and a rotating selection of seasonal vegetables including tomatoes, carrots, lettuce, and hearty greens. All our farming practices prioritize soil health, biodiversity, and sustainable stewardship of the land. We use no synthetic pesticides or fertilizers, ensuring our products are as natural and nutritious as possible.', '789 Farm Road, Greenfield (Located just outside town with easy access, seasonal farm stand available)', '(555) 345-6789', '🚜')" class="partner-link">Visit Johnson's Farm</a>
                 </div>
 
                 <div class="partner-card">
@@ -268,7 +331,7 @@
                         <span>📍 321 Meadow Lane</span>
                         <span>📞 (555) 456-7890</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Apiaries</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Greenfield Apiaries', 'Passion-driven beekeeping operation dedicated to supporting pollinator health and producing the finest raw, unfiltered honey available. Our experienced beekeepers maintain several hives in pristine natural settings, allowing our bees to forage from wildflowers and native plants. We harvest honey in small batches, never heating or processing it, to preserve all the natural enzymes, nutrients, and beneficial compounds. Beyond honey production, we\'re committed to education about pollinator conservation and environmental stewardship.', '321 Meadow Lane, Greenfield (Located in the scenic countryside with beautiful meadows, ample parking)', '(555) 456-7890', '🐝')" class="partner-link">Visit Apiaries</a>
                 </div>
 
                 <div class="partner-card">
@@ -279,7 +342,7 @@
                         <span>📍 159 Craft Street</span>
                         <span>📞 (555) 567-8901</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Natural Creations</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Natural Creations', 'Small locally-owned business dedicated to crafting high-quality, handmade personal care products. Our artisan soaps are made from natural ingredients including organic oils, essential oils, and sustainable botanicals. Each bar is carefully crafted in small batches to ensure the highest quality. We specialize in customized soaps and skincare products tailored to individual needs and preferences. All our products are free from harsh chemicals, synthetic fragrances, and animal products.', '159 Craft Street, Greenfield (Located in the historic arts district near local galleries, easy street parking)', '(555) 567-8901', '🧼')" class="partner-link">Visit Natural Creations</a>
                 </div>
 
                 <div class="partner-card">
@@ -290,7 +353,7 @@
                         <span>📍 246 Main Street</span>
                         <span>📞 (555) 678-9012</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Café</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Greenfield Café', 'Beloved community gathering place serving premium locally-roasted coffee and freshly baked pastries. We source our coffee beans from fair-trade roasters within the region, ensuring exceptional quality and supporting sustainable farming practices. Our cozy interior features comfortable seating, free WiFi, and a warm atmosphere perfect for studying, working, or meeting friends. We feature daily specials including seasonal beverages, homemade desserts, and light fare. Our baristas are passionate about coffee and always happy to recommend the perfect brew.', '246 Main Street, Greenfield (Located in the heart of downtown near shops and businesses, with convenient public parking)', '(555) 678-9012', '☕')" class="partner-link">Visit Café</a>
                 </div>
 
                 <div class="partner-card">
@@ -301,7 +364,7 @@
                         <span>📍 135 Tool Avenue</span>
                         <span>📞 (555) 789-0123</span>
                     </div>
-                    <a href="#" class="partner-link">Visit Hardware Store</a>
+                    <a href="#" onclick="showPartnerPopup(event, 'Miller\'s Hardware', 'For fifty years, Miller\'s Hardware has been the trusted home improvement destination for Greenfield residents. We offer an extensive selection of quality tools, building materials, and hardware supplies for both professionals and DIY enthusiasts. Our knowledgeable staff provides expert advice and personalized service, committed to helping you find exactly what you need for any project. Beyond just products, we\'re invested in our community, supporting local construction projects, schools, and civic organizations. When you shop with us, you\'re supporting a true neighborhood institution dedicated to quality, service, and community connection.', '135 Tool Avenue, Greenfield (Located in the central business district near downtown, free parking lot)', '(555) 789-0123', '🔧')" class="partner-link">Visit Hardware Store</a>
                 </div>
             </div>
 
@@ -330,8 +393,8 @@
                 <h2>About Greenfield Market</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>For nearly 40 years, Greenfield Market has been the heart of our community. We're more than just a store – we're your neighbors, committed to supporting local farmers, artisans, and families.</p>
-                        <p>Our mission is to provide fresh, quality products while strengthening the bonds that make Greenfield such a special place to live.</p>
+                        <p>For nearly 40 years, Greenfield Market has been the heart of our community. We're more than just a website – we're your neighbors, committed to supporting local farmers, artisans, and families.</p>
+                        <p>Our mission is to provide fresh, quality products while strengthening the bonds that make your community such a special place to live.</p>
                         <ul>
                             <li>🌱 Support for local farmers and producers</li>
                             <li>🤝 Community events and sponsorships</li>
@@ -373,6 +436,151 @@
                 </div>
             </div>
         </div>
+
+        <div id="checkout-modal" class="checkout-modal">
+            <div class="checkout-content">
+                <div class="checkout-header">
+                    <h2>Checkout</h2>
+                    <button onclick="closeCheckout()" class="close-btn">&times;</button>
+                </div>
+                <div class="checkout-body">
+                    <form id="checkout-form" onsubmit="submitCheckout(event)">
+                        <!-- Delivery Address Section -->
+                        <div class="form-section">
+                            <h3>📍 Delivery Address</h3>
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="street-address">Street Address</label>
+                                <input type="text" id="street-address" name="street-address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="zip-code">ZIP Code</label>
+                                    <input type="text" id="zip-code" name="zip-code" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Section -->
+                        <div class="form-section">
+                            <h3>💳 Payment Information</h3>
+                            <div class="form-group">
+                                <label for="card-name">Cardholder Name</label>
+                                <input type="text" id="card-name" name="card-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry Date (MM/YY)</label>
+                                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="form-section">
+                            <h3>📦 Order Summary</h3>
+                            <div id="checkout-summary"></div>
+                            <div class="order-total">
+                                <strong>Total: $<span id="checkout-total">0.00</span></strong>
+                            </div>
+                        </div>
+
+                        <div class="checkout-actions">
+                            <button type="button" onclick="closeCheckout()" class="btn-cancel">Cancel</button>
+                            <button type="submit" class="btn-submit">Complete Order</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="confirmation-modal" class="confirmation-modal">
+            <div class="confirmation-content">
+                <div class="confirmation-icon">✓</div>
+                <h2>Order Confirmed!</h2>
+                <p class="confirmation-message">Thank you for your order</p>
+                
+                <div class="confirmation-details">
+                    <div class="detail-box">
+                        <h3>Confirmation Number</h3>
+                        <p class="confirmation-number" id="confirmation-number">GFM-2026-0001</p>
+                    </div>
+                    
+                    <div class="detail-box">
+                        <h3>Order Details</h3>
+                        <p id="confirmation-name"></p>
+                        <p id="confirmation-address"></p>
+                        <p id="confirmation-phone"></p>
+                    </div>
+                    
+                    <div class="detail-box">
+                        <h3>Order Summary</h3>
+                        <div id="confirmation-items"></div>
+                        <div class="confirmation-total">
+                            <strong>Total: $<span id="confirmation-total">0.00</span></strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="confirmation-note">
+                    📧 A confirmation email has been sent to your email address.<br>
+                    🍃 Supporting local community, one order at a time!
+                </p>
+                
+                <button onclick="closeConfirmation()" class="btn-home">Back to Home</button>
+            </div>
+        </div>
+
+        <div id="partner-modal" class="partner-modal">
+            <div class="partner-modal-content">
+                <button onclick="closePartnerPopup()" class="partner-close-btn">&times;</button>
+                <div class="partner-modal-header">
+                    <span id="partner-logo" class="partner-modal-logo"></span>
+                    <h2 id="partner-name"></h2>
+                </div>
+                <div class="partner-modal-body">
+                    <p id="partner-description"></p>
+                    <div class="partner-modal-info">
+                        <div class="partner-info-item">
+                            <strong>📍 Location</strong>
+                            <p id="partner-location"></p>
+                        </div>
+                        <div class="partner-info-item">
+                            <strong>📞 Phone</strong>
+                            <p id="partner-phone"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-modal-footer">
+                    <button onclick="closePartnerPopup()" class="btn-close">Close</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer id="contact">
@@ -381,8 +589,6 @@
                 <h4>🏪 Greenfield Market</h4>
                 <p>Your trusted neighborhood store since 1985</p>
                 <div class="social-links">
-                    <span>📘 Facebook</span>
-                    <span>📷 Instagram</span>
                 </div>
             </div>
             <div class="footer-section">

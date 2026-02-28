@@ -1,0 +1,27 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f5f5f5"/>
+  
+  <!-- Paint can body -->
+  <path d="M 70 90 L 65 160 Q 65 175 80 175 L 120 175 Q 135 175 135 160 L 130 90 Z" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+  
+  <!-- Paint can rim -->
+  <ellipse cx="100" cy="90" rx="30" ry="10" fill="#d63031" stroke="#c0392b" stroke-width="2"/>
+  
+  <!-- Paint can top highlight -->
+  <ellipse cx="100" cy="90" rx="28" ry="8" fill="#ff6b6b" opacity="0.3"/>
+  
+  <!-- Paint can label -->
+  <rect x="75" y="115" width="50" height="40" fill="#ffeb3b" stroke="#f77f00" stroke-width="1" rx="3"/>
+  
+  <!-- Label text -->
+  <text x="100" y="130" text-anchor="middle" font-family="Arial" font-size="9" fill="#c0392b" font-weight="bold">PAINT</text>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial" font-size="8" fill="#333">Premium</text>
+  
+  <!-- Paint drip -->
+  <path d="M 72 160 Q 70 165 72 170" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 128 160 Q 130 165 128 170" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Can handle -->
+  <path d="M 85 85 Q 80 70 95 65" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

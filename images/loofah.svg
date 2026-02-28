@@ -1,0 +1,41 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f5f5f5"/>
+  
+  <!-- Loofah main body -->
+  <ellipse cx="100" cy="100" rx="38" ry="50" fill="#f4c430" stroke="#d4a017" stroke-width="2"/>
+  
+  <!-- Loofah texture dots -->
+  <circle cx="80" cy="75" r="2" fill="#e8b923"/>
+  <circle cx="95" cy="70" r="2" fill="#e8b923"/>
+  <circle cx="110" cy="72" r="2" fill="#e8b923"/>
+  <circle cx="125" cy="78" r="2" fill="#e8b923"/>
+  
+  <circle cx="75" cy="90" r="2" fill="#e8b923"/>
+  <circle cx="88" cy="85" r="2" fill="#e8b923"/>
+  <circle cx="105" cy="88" r="2" fill="#e8b923"/>
+  <circle cx="118" cy="92" r="2" fill="#e8b923"/>
+  <circle cx="130" cy="95" r="2" fill="#e8b923"/>
+  
+  <circle cx="70" cy="110" r="2" fill="#e8b923"/>
+  <circle cx="85" cy="108" r="2" fill="#e8b923"/>
+  <circle cx="100" cy="105" r="2" fill="#e8b923"/>
+  <circle cx="115" cy="110" r="2" fill="#e8b923"/>
+  <circle cx="135" cy="112" r="2" fill="#e8b923"/>
+  
+  <circle cx="78" cy="128" r="2" fill="#e8b923"/>
+  <circle cx="92" cy="130" r="2" fill="#e8b923"/>
+  <circle cx="108" cy="132" r="2" fill="#e8b923"/>
+  <circle cx="122" cy="128" r="2" fill="#e8b923"/>
+  
+  <circle cx="85" cy="145" r="2" fill="#e8b923"/>
+  <circle cx="100" cy="148" r="2" fill="#e8b923"/>
+  <circle cx="115" cy="145" r="2" fill="#e8b923"/>
+  
+  <!-- String/rope at top -->
+  <line x1="85" y1="50" x2="115" y2="50" stroke="#8B7355" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="50" r="3" fill="#8B7355"/>
+  
+  <!-- Highlight -->
+  <ellipse cx="90" cy="85" rx="12" ry="18" fill="#ffffff" opacity="0.25"/>
+</svg>
