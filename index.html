@@ -76,6 +76,16 @@
                     <button class="filter-btn" onclick="filterProducts('hardware')">🔨 Hardware</button>
                 </div>
             </div>
+
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="product-search-bar" 
+                    class="search-bar" 
+                    placeholder="🔍 Search products by name or category..." 
+                    onkeyup="searchProducts()"
+                >
+            </div>
             
             <div class="products-grid">
                 <div class="product-card" data-category="bakery">
