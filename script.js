@@ -466,6 +466,23 @@ function filterProducts(category) {
     }, 50);
 }
 
+// Search products functionality
+function searchProducts() {
+    const searchValue = document.getElementById('product-search-bar').value.toLowerCase();
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        const productDescription = card.querySelector('.description').textContent.toLowerCase();
+        
+        if (productName.includes(searchValue) || productDescription.includes(searchValue)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
 // Partner popup functions
 function showPartnerPopup(event, name, description, location, phone, logo) {
     event.preventDefault();
