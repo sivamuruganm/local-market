@@ -2,6 +2,7 @@
 let cart = [];
 let cartTotal = 0;
 let activeCategory = 'all'; // Track active category
+let donationAmount = 0; // Track donation amount
 
 // Product data
 const products = {
@@ -159,6 +160,13 @@ function checkout() {
         return;
     }
     
+    // Reset donation
+    donationAmount = 0;
+    document.getElementById('donate-checkbox').checked = false;
+    document.getElementById('donation-options').style.display = 'none';
+    document.getElementById('donation-display').innerHTML = '';
+    document.getElementById('custom-donation-amount').value = '';
+    
     // Show checkout modal
     const checkoutModal = document.getElementById('checkout-modal');
     const checkoutSummary = document.getElementById('checkout-summary');
@@ -187,6 +195,7 @@ function checkout() {
     }
     
     checkoutSummary.innerHTML = summaryHTML;
+    document.getElementById('checkout-subtotal').textContent = cartTotal.toFixed(2);
     document.getElementById('checkout-total').textContent = cartTotal.toFixed(2);
     
     checkoutModal.style.display = 'block';
@@ -198,6 +207,49 @@ function closeCheckout() {
     const checkoutModal = document.getElementById('checkout-modal');
     checkoutModal.style.display = 'none';
     document.body.style.overflow = 'auto';
+}
+
+// Toggle donation options
+function toggleDonation() {
+    const checkbox = document.getElementById('donate-checkbox');
+    const donationOptions = document.getElementById('donation-options');
+    
+    if (checkbox.checked) {
+        donationOptions.style.display = 'block';
+    } else {
+        donationOptions.style.display = 'none';
+        donationAmount = 0;
+        updateCheckoutTotal();
+        document.getElementById('donation-display').innerHTML = '';
+        document.getElementById('custom-donation-amount').value = '';
+    }
+}
+
+// Set donation amount
+function setDonation(amount) {
+    donationAmount = parseFloat(amount) || 0;
+    updateCheckoutTotal();
+    
+    // Update active button styling
+    const buttons = document.querySelectorAll('.donation-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Find and highlight the clicked button
+    if (amount !== this.value) {
+        event.target.classList.add('active');
+    }
+    
+    // Update display
+    if (donationAmount > 0) {
+        document.getElementById('donation-display').innerHTML = 
+            `<strong>✓ Thank you for donating $${donationAmount.toFixed(2)} to the small business community!</strong>`;
+    }
+}
+
+// Update checkout total with donation
+function updateCheckoutTotal() {
+    const newTotal = cartTotal + donationAmount;
+    document.getElementById('checkout-total').textContent = newTotal.toFixed(2);
 }
 
 // Submit checkout form
@@ -268,8 +320,20 @@ function submitCheckout(event) {
         `;
     }
     
+    // Add donation if applicable
+    let confirmationTotal = cartTotal;
+    if (donationAmount > 0) {
+        itemsHTML += `
+            <div class="confirmation-item">
+                <span>Donation to Small Business Community</span>
+                <span>$${donationAmount.toFixed(2)}</span>
+            </div>
+        `;
+        confirmationTotal += donationAmount;
+    }
+    
     document.getElementById('confirmation-items').innerHTML = itemsHTML;
-    document.getElementById('confirmation-total').textContent = cartTotal.toFixed(2);
+    document.getElementById('confirmation-total').textContent = confirmationTotal.toFixed(2);
     
     // Hide checkout modal and show confirmation modal
     closeCheckout();
@@ -279,6 +343,7 @@ function submitCheckout(event) {
     
     // Clear cart and close cart modal
     cart = [];
+    donationAmount = 0; // Reset donation
     updateCartDisplay();
     toggleCart();
     
