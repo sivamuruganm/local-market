@@ -1,6 +1,7 @@
 // Shopping cart functionality
 let cart = [];
 let cartTotal = 0;
+let activeCategory = 'all'; // Track active category
 
 // Product data
 const products = {
@@ -437,45 +438,41 @@ function openPresentation() {
 
 // Product filtering functionality
 function filterProducts(category) {
-    const products = document.querySelectorAll('.product-card');
+    activeCategory = category; // Store the active category
     const filterButtons = document.querySelectorAll('.filter-btn');
     
     // Update active button
     filterButtons.forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
     
-    // Filter products
-    products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-            product.classList.remove('hidden');
-            product.style.display = 'block';
-        } else {
-            product.classList.add('hidden');
-            product.style.display = 'none';
-        }
-    });
-    
-    // Add smooth animation
-    setTimeout(() => {
-        products.forEach(product => {
-            if (!product.classList.contains('hidden')) {
-                product.style.opacity = '1';
-                product.style.transform = 'translateY(0)';
-            }
-        });
-    }, 50);
+    // Re-run search with new category filter
+    searchProducts();
 }
 
 // Search products functionality
 function searchProducts() {
-    const searchValue = document.getElementById('product-search-bar').value.toLowerCase();
+    const searchValue = document.getElementById('product-search-bar').value.toLowerCase().trim();
     const productCards = document.querySelectorAll('.product-card');
     
     productCards.forEach(card => {
         const productName = card.querySelector('h3').textContent.toLowerCase();
         const productDescription = card.querySelector('.description').textContent.toLowerCase();
+        const productCategory = card.dataset.category;
         
-        if (productName.includes(searchValue) || productDescription.includes(searchValue)) {
+        // Check category filter
+        const categoryMatches = activeCategory === 'all' || productCategory === activeCategory;
+        
+        // Check search term
+        let searchMatches = true;
+        if (searchValue !== '') {
+            const nameMatches = productName.startsWith(searchValue);
+            const words = productDescription.split(/\s+/);
+            const descriptionMatches = words.some(word => word.startsWith(searchValue));
+            searchMatches = nameMatches || descriptionMatches;
+        }
+        
+        // Show card if both category and search match
+        if (categoryMatches && searchMatches) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
