@@ -468,14 +468,26 @@ function filterProducts(category) {
 
 // Search products functionality
 function searchProducts() {
-    const searchValue = document.getElementById('product-search-bar').value.toLowerCase();
+    const searchValue = document.getElementById('product-search-bar').value.toLowerCase().trim();
     const productCards = document.querySelectorAll('.product-card');
+    
+    if (searchValue === '') {
+        productCards.forEach(card => card.style.display = 'block');
+        return;
+    }
     
     productCards.forEach(card => {
         const productName = card.querySelector('h3').textContent.toLowerCase();
         const productDescription = card.querySelector('.description').textContent.toLowerCase();
         
-        if (productName.includes(searchValue) || productDescription.includes(searchValue)) {
+        // Check if product name starts with search term
+        const nameMatches = productName.startsWith(searchValue);
+        
+        // Check if any word in description starts with search term
+        const words = productDescription.split(/\s+/);
+        const descriptionMatches = words.some(word => word.startsWith(searchValue));
+        
+        if (nameMatches || descriptionMatches) {
             card.style.display = 'block';
         } else {
             card.style.display = 'none';
