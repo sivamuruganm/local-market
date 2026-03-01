@@ -242,7 +242,7 @@ function setDonation(amount) {
     // Update display
     if (donationAmount > 0) {
         document.getElementById('donation-display').innerHTML = 
-            `<strong>✓ Thank you for donating $${donationAmount.toFixed(2)} to the local food bank!</strong>`;
+            `<strong>✓ Thank you for donating $${donationAmount.toFixed(2)} to the small business community!</strong>`;
     }
 }
 
@@ -325,7 +325,7 @@ function submitCheckout(event) {
     if (donationAmount > 0) {
         itemsHTML += `
             <div class="confirmation-item">
-                <span>Donation to Local Food Bank</span>
+                <span>Donation to Small Business Community</span>
                 <span>$${donationAmount.toFixed(2)}</span>
             </div>
         `;
